@@ -201,7 +201,7 @@ function upgrading() {
 function findStar(ownX, ownY) {
     //top row
     for (var i = 0; i <= 4; i++) {  
-        if (ownY - 4 >= 0 && ownX - 2 + i >= 0 && ownX - 2 + i <= 49) {
+        if (ownY - 4 >= 0 && ownX - 2 + i >= 0 && ownX - 2 + i <= 99) {
             if (map[ownY - 4][ownX - 2 + i][1] == "b") {
                 var check = true;
                 for(var x = 0; x < Xcoordinates.length; x++){
@@ -218,7 +218,7 @@ function findStar(ownX, ownY) {
     }
     //second from top row
     for (var i = 0; i <= 6; i++) {
-        if (ownY - 3 >= 0 && ownX - 3 + i >= 0 && ownX - 3 + i <= 49) {
+        if (ownY - 3 >= 0 && ownX - 3 + i >= 0 && ownX - 3 + i <= 99) {
             if (map[ownY - 3][ownX - 3 + i][1] == "b") {
                 var check = true; 
                 for (var x = 0;  x < Xcoordinates.length; x++) {
@@ -237,7 +237,7 @@ function findStar(ownX, ownY) {
     //third to seventh row
     for (var i = 0; i <= 8; i++) {
         for (var j = 0; j <= 4; j++) {
-            if (ownY - 2 + j >= 0 && ownY - 2 + j <= 49 && ownX - 4 + i >= 0 && ownX - 4 + i <= 49) {
+            if (ownY - 2 + j >= 0 && ownY - 2 + j <= 99 && ownX - 4 + i >= 0 && ownX - 4 + i <= 99) {
                 if (map[ownY - 2 + j][ownX - 4 + i][1] == "b") {
                     if(!(ownX - 4 + i == ownX && ownY - 2 + j == ownY)) {
                         var check = true; 
@@ -257,7 +257,7 @@ function findStar(ownX, ownY) {
     }
     //second row from bottom
     for (var i = 0; i <= 6; i++) {
-        if (ownY + 3 <= 49 && ownX - 3 + i >= 0 && ownX - 3 + i <= 49) {
+        if (ownY + 3 <= 99 && ownX - 3 + i >= 0 && ownX - 3 + i <= 99) {
             if (map[ownY + 3][ownX - 3 + i][1] == "b") {
                 var check = true; 
                 for (var x = 0;  x < Xcoordinates.length; x++) {
@@ -274,7 +274,7 @@ function findStar(ownX, ownY) {
     }
     //bottom row
     for (var i = 0; i <= 4; i++) {
-        if (ownY + 4 <= 49 && ownX - 2 + i >= 0 && ownX - 2 + i <= 49) {
+        if (ownY + 4 <= 99 && ownX - 2 + i >= 0 && ownX - 2 + i <= 99) {
             if (map[ownY + 4][ownX - 2 + i][1] == "b") {
                 var check = true; 
                 for (var x = 0;  x < Xcoordinates.length; x++) {
@@ -300,7 +300,7 @@ function toStar(starPosX, starPosY) {
     
     console.log("moving to star");
     
-    var claim_cooldown = 5750;
+    var claim_cooldown = 2800;
     var attackLoop;
     var attackExecuted = false;
 
@@ -391,7 +391,7 @@ function toStar2(){
 
     console.log("moving to star");
     
-    var claim_cooldown = 5750;
+    var claim_cooldown = 2800;
     var attackLoop;
     var attackExecuted = false;
     var i = path.length - 2;
@@ -501,7 +501,7 @@ function bfs(x,y){
         }
 
         //down
-        if(YtileSet[i][0]+1 <= 49 && cellCost(YtileSet[i][0]+1,XtileSet[i][0]) < 750000 && !isDuplicate(XtileSet[i][0],YtileSet[i][0]+1,XtileSet,YtileSet) && !(map[YtileSet[i][0]+1][XtileSet[i][0]][2] == "w")){
+        if(YtileSet[i][0]+1 <= 99 && cellCost(YtileSet[i][0]+1,XtileSet[i][0]) < 750000 && !isDuplicate(XtileSet[i][0],YtileSet[i][0]+1,XtileSet,YtileSet) && !(map[YtileSet[i][0]+1][XtileSet[i][0]][2] == "w")){
             XtileSet.push([XtileSet[i][0],XtileSet[i][0]]);
             YtileSet.push([YtileSet[i][0]+1,YtileSet[i][0]]);
             if(map[YtileSet[i][0]+1][XtileSet[i][0]][1] == "b"){
@@ -516,7 +516,7 @@ function bfs(x,y){
         }
 
         //right
-        if(XtileSet[i][0]+1 <= 49 && cellCost(YtileSet[i][0],XtileSet[i][0]+1) < 750000 && !isDuplicate(XtileSet[i][0]+1,YtileSet[i][0],XtileSet,YtileSet) && !(map[YtileSet[i][0]][XtileSet[i][0]+1][2] == "w")){
+        if(XtileSet[i][0]+1 <= 99 && cellCost(YtileSet[i][0],XtileSet[i][0]+1) < 750000 && !isDuplicate(XtileSet[i][0]+1,YtileSet[i][0],XtileSet,YtileSet) && !(map[YtileSet[i][0]][XtileSet[i][0]+1][2] == "w")){
             XtileSet.push([XtileSet[i][0]+1,XtileSet[i][0]]);
             YtileSet.push([YtileSet[i][0],YtileSet[i][0]]);
             if(map[YtileSet[i][0]][XtileSet[i][0]+1][1] == "b"){
@@ -561,4 +561,3 @@ function isDuplicate(x,y,XtileSet,YtileSet){
     }
     return false;
 }
-
