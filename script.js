@@ -61,7 +61,7 @@ function attack(y,x){
     for (var i = 0; i < XtilesClaimed.length; i++) {
         if (x == XtilesClaimed[i] && y == YtilesClaimed[i]) {
             console.log(`(${x}, ${y}) duplicate`);
-            return true; 
+            //return true; 
         }
     }
 
