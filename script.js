@@ -98,7 +98,7 @@ function chooseAction() {
             for(var i = 0; i < Xcoordinates.length; i++) {
                 findStar(Xcoordinates[i], Ycoordinates[i]);
             }
-            if (Xcoordinates.length >= 5) {
+            if (Xcoordinates.length >= 3) {
                 clearInterval(checkIfSpawnedLoop);
                 switcher=1; 
                 updateInterval(500);
