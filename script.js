@@ -32,6 +32,8 @@ TODO:
 */
 
 // ----- Global variables
+var botOn = true;
+
 var currentPositionX = parseInt(playerY);
 var currentPositionY = parseInt(playerX);
 
@@ -560,4 +562,27 @@ function isDuplicate(x,y,XtileSet,YtileSet){
         }
     }
     return false;
+}
+
+$('#panelMenu > div > button:nth-child(4)').contextmenu(function() {
+   if (botOn) {
+      clearInterval(mainInterval);
+      botOn = false;
+      fade("#panelMenu > div > button:nth-child(4)", "red", "#fff", "background");
+   } else {
+      mainInterval = setInterval(function () {
+         chooseAction();
+      }, 5000);
+      botOn = true;
+      fade("#panelMenu > div > button:nth-child(4)", "green", "#fff", "background");
+   }
+   return false;
+});
+
+function fade(s, n, t, i) {
+   "" != i && void 0 !== i || (i = "background"), $(s).css("" + i, n), setTimeout(function() {
+      $(s).css("transition", i + " 1.9s"), $(s).css("" + i, t), setTimeout(function() {
+         $(s).css("transition", i + " 0s")
+      }, 100)
+   }, 50)
 }
